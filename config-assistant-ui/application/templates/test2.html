@@ -1,0 +1,47 @@
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#AddSettings"
+        aria-expanded="false" aria-controls="AddSettings">
+        Click Here for Additional Settings
+      </button>
+    </h2>
+    <div id="AddSettings" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        {% for settings in additional_settings %}
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="{{settings}}">
+          <label class="form-check-label" for="flexSwitchCheckDefault">{{settings}}</label>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#AddSettings"
+    aria-expanded="false" aria-controls="collapseExample">
+    Click Here for Additional Settings
+  </button>
+  <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#AddSettings"
+    aria-expanded="false" aria-controls="collapseOne">
+    Accordion Item #1
+  </button>
+
+  <div class="collapse" id="AddSettings">
+    <div class="card card-body">
+
+      {% for settings in additional_settings %}
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="{{settings}}">
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{settings}}</label>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>

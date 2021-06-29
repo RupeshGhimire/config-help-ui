@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<hr>
+<!-- <button type="button" class="btn btn-success">Ingestion Configuration</button> -->
+<button type="button" class="btn btn-success" data-bs-toggle="popover" title="Help: "
+	data-bs-content="Fill the form below to generate JSON Config on the right side">Ingestion Configuration</button>
+
+
+<br>
+<br>
+
+<div class="container-sm">
+	<div class="row justify-content-between">
+
+		<div class="col-6">
+			<!-- Colum 1 start -->
+			<form id="ingestion_form_main" method="POST">
+				<div class="mb-3">
+					<label for="exampleInputEmail1" class="form-label"> REGION: </label>
+					<select class="form-select" id="region" name="region" required>
+						<option selected disabled value="">Choose...</option>
+						<option>TEST</option>
+						<option>ACCP</option>
+						<option>UAT</option>
+						<option>PROD</option>
+					</select>
+				</div>
+
+				<div class="col-md-19">
+					<label for="ApplicationName" class="form-label">Application Name: </label>
+					<input type="text" class="form-control" id="application" name="application" value=""
+						placeholder="Flightkit">
+				</div>
+
+				<div class="mb-3">
+					<label for="SourceBucketName" class="form-label">Source Bucket Name: </label>
+					<select class="form-select" id="bucketname" name="bucketname">
+						<option selected disabled value="">Choose...</option>
+					</select>
+				</div>
+
+
+				<div class="mb-3">
+					<label for="exampleInputEmail1" class="form-label">Destination Bucket Name: </label>
+					<select class="form-select" id="destinationBucket" name="destinationBucket">
+						<option selected disabled value="">Choose...</option>
+					</select>
+				</div>
+
+				<div class="col-md-10">
+					<label for="validationCustom03" class="form-label">Source Location: </label>
+					<input type="text" class="form-control" id="datasetRegex" name="datasetRegex"
+						placeholder="landing/...">
+				</div>
+
+				<div class="col-md-10">
+					<label for="validationCustom03" class="form-label">Destination Location: </label>
+					<input type="text" class="form-control" id="outputPath" name="outputPath" placeholder="archive/">
+				</div>
+				<br>
+
+				<div class="accordion" id="accordionExample">
+
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#AddSettings" aria-expanded="false" aria-controls="collapseTwo">
+								Additional Settings
+							</button>
+						</h2>
+
+						<div id="AddSettings" class="accordion-collapse collapse" aria-labelledby="headingThree"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<div class="container">
+									<div class="row">
+
+										<div class="col">
+
+											<h6>Toggle True/False </h6>
+
+											{% for togl_settings in additional_settings %}
+
+											<div class="form-check form-switch">
+												<input class="form-check-input" type="checkbox" id="{{togl_settings}}"
+													name="{{togl_settings}}">
+												<label class="form-check-label"
+													for="flexSwitchCheckDefault">{{togl_settings}}</label>
+											</div>
+
+											{% endfor %}
+										</div>
+
+										<div class="col">
+											<h6>Values: </h6>
+											{% for val_settings in value_settings%}
+											<div class="input-group mb-4">
+												<span class="input-group-text" id="basic-addon1">{{val_settings}}</span>
+												<input type="text" class="form-control" value="0"
+													name="{{val_settings}}" id="{{val_settings}}" aria-label="0"
+													aria-describedby="basic-addon1">
+											</div>
+											{% endfor %}
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<br>
+				<input type="submit" class="btn btn-primary" value="Generate JSON">
+			</form>
+		</div> <!-- Column 1 End -->
+
+
+		<div class="col-6">
+			<!-- Column 2 Start -->
+			<div class="card">
+				<div class="accordion" id="accordionExample">
+
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								JSON PREVIEW
+							</button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body">
+								<div id="jpre">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div> <!-- Column 2 End -->
+
+	</div>
+</div>
+
+{% endblock %}

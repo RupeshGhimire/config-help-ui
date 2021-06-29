@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Configuration Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="p-3 mb-2 bg-gray bg-gradient text-dark">
+    <div class="navbar -fluid bg-dark bg-gradient">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Verisk_Analytics_Logo.svg/1280px-Verisk_Analytics_Logo.svg.png"
+            class="img mx-auto d-block" style="width: auto; height: 100px; padding: 10px" />
+    </div>
+
+    <div class="container-sm">
+        {% include "includes/nav.html"%}
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static' , filename='main.js' )}}"></script>
+
+</body>
+
+</html>
